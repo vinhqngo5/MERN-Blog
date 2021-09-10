@@ -4,12 +4,14 @@ import cors from "cors";
 import morgan from "morgan";
 import posts from "./routers/posts.js";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.port || 5000;
 
-const URI =
-	"mongodb+srv://admin:admin@cluster0.lfrsu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const URI = process.env.DATABASE_URL
 
 // limit maximum of req from client to server
 app.use(bodyParser.json({ limit: "30mb" }));

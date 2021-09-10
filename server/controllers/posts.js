@@ -22,13 +22,13 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
 	try {
-		const updatePost = req.body;
+		const updatedPost = req.body;
 		const post = await PostModel.findOneAndUpdate(
-			{ _id: updatePost._id },
-			updatePost,
+			{ _id: updatedPost._id },
+			updatedPost,
 			{ new: true }
 		);
-		res.status(200).json(posts);
+		res.status(200).json(post);
 	} catch (err) {
 		res.status(500).json({ error: err });
 	}
